@@ -1,0 +1,56 @@
+@use url('./scroll-bar.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    * {
+        @apply m-0 box-border list-none scroll-smooth p-0;
+    }
+}
+
+@layer utilities {
+    .flex-center {
+        @apply flex items-center justify-center;
+    }
+    .flex-center-col {
+        @apply flex flex-col items-center;
+    }
+    .flex-between {
+        @apply flex items-center justify-between;
+    }
+    .flex-start {
+        @apply flex items-center justify-start;
+    }
+
+    .base-normal {
+        @apply text-base font-normal;
+    }
+    .small-semibold {
+        @apply text-sm font-semibold leading-[22px] tracking-[0.175px];
+    }
+    .medium-2xl {
+        @apply text-2xl font-medium;
+    }
+    .md-text-ellipses {
+        @apply overflow-hidden text-ellipsis whitespace-nowrap;
+    }
+    .md-text-ellipses-2 {
+        text-wrap: wrap;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+    .md-text-ellipses-3 {
+        text-wrap: wrap;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+    }
+}
+
+@layer components {
+}

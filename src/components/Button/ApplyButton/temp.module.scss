@@ -1,0 +1,22 @@
+.temp {
+    background: #00b14f;
+    color: #fff;
+    width: calc(100% - 144px);
+    align-items: center;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    gap: 6px;
+    height: 40px;
+    justify-content: center;
+    letter-spacing: 0.175px;
+    line-height: 22px;
+    padding: 8px 16px 8px 12px;
+
+    &:hover {
+        background-color: #009643;
+    }
+}

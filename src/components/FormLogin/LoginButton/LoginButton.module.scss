@@ -1,0 +1,18 @@
+.button {
+    border-radius: 7px;
+    border: 2px solid transparent;
+
+    text-shadow: 1px 1px 1px #00000040;
+    box-shadow: 2px 2px 5px 0px #45090059;
+
+    padding: 10px 40px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+    color: white;
+}
+
+.button:hover {
+    box-shadow: none;
+    opacity: 80%;
+}

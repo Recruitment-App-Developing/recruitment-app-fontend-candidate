@@ -1,0 +1,11 @@
+.selected {
+    color: #00b14f;
+}
+.selected::after {
+    color: #00b14f;
+    content: '✔';
+    position: absolute;
+    right: 10px;
+    font-size: 16px;
+    font-weight: 700;
+}

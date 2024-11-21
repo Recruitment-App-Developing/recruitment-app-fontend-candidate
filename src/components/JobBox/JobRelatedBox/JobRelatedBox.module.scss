@@ -1,0 +1,24 @@
+.title {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    color: #263a4d;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: -0.16px;
+    line-height: 24px;
+    margin-top: 14px;
+    margin-bottom: 15px;
+
+    &::before {
+        background-color: #00b14f;
+        border-radius: 2px;
+        content: '';
+        display: inline-block;
+        height: 26px;
+        margin-right: 10px;
+        width: 6px;
+    }
+}

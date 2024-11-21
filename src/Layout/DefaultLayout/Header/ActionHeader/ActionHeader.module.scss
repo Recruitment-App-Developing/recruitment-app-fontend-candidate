@@ -1,0 +1,66 @@
+// Action Header Auth
+
+//// button-employee
+.button-employee {
+    --primary-color: #ffffff;
+    --secondary-color: #111;
+    --hover-color: #00ff00;
+    --arrow-width: 10px;
+    --arrow-stroke: 2px;
+    box-sizing: border-box;
+    border: 0;
+    color: var(--secondary-color);
+    padding: 0;
+    background: transparent;
+    display: flex;
+    transition: 0.2s background;
+    align-items: center;
+    gap: 0.6em;
+    font-weight: bold;
+
+    &:hover .button-text {
+        color: var(--hover-color);
+    }
+
+    &:hover .arrow {
+        background: var(--hover-color);
+    }
+    &:hover .arrow:before {
+        right: 0;
+        border-color: var(--hover-color);
+    }
+}
+.button-text {
+    line-height: 20px;
+    justify-content: center;
+}
+.arrow-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.arrow {
+    margin-top: 4px;
+    width: var(--arrow-width);
+    background: var(--primary-color);
+    height: var(--arrow-stroke);
+    position: relative;
+    transition: 0.2s;
+
+    &:before {
+        content: '';
+        box-sizing: border-box;
+        position: absolute;
+        border: solid var(--secondary-color);
+        border-width: 0 var(--arrow-stroke) var(--arrow-stroke) 0;
+        display: inline-block;
+        top: -3px;
+        right: 7px;
+        transition: 0.2s;
+        padding: 3px;
+        transform: rotate(-45deg);
+    }
+}
+
+// Action Header No Auth

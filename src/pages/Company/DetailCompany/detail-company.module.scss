@@ -1,0 +1,26 @@
+// Company cover inner
+.cover-inner {
+    background: linear-gradient(90deg, #212f3f, #00b14f);
+    border-radius: 10px;
+    min-height: 358px;
+    overflow: hidden;
+    margin: 0 0 32px;
+}
+
+// Company Box Infor
+.box-infor {
+    margin: 0 0 32px;
+    border-radius: 10px;
+    background: white;
+}
+
+.title {
+    background: linear-gradient(90deg, #1c4742, #22c96d);
+    border-radius: 10px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 26px;
+    margin: 0;
+    padding: 12px 20px;
+}

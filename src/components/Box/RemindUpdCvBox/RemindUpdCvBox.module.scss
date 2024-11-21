@@ -1,0 +1,62 @@
+.wrapper {
+    background: linear-gradient(
+        272deg,
+        #ebfff2 -4.82%,
+        #f3fff7 42.95%,
+        #d8ffe6
+    );
+    border: 0 solid #f2f4f5;
+    border-radius: 8px;
+    display: flex;
+}
+
+.btn-create-cv {
+    align-items: center;
+    background: #00b14f;
+    border-radius: 3px;
+    color: #fff;
+    display: flex;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    gap: 8px;
+    height: fit-content;
+    letter-spacing: 0.15px;
+    line-height: 20px;
+    padding: 3px 8px;
+    text-decoration: none;
+    width: fit-content;
+}
+.fa-arrow-right {
+    color: #fff;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 16px;
+    text-align: center;
+}
+.fa-arrow-trend-up {
+    align-items: center;
+    color: #00b14f;
+    display: flex;
+    font-size: 25.127px;
+    font-style: normal;
+    font-weight: 400;
+    height: 43.075px;
+    justify-content: center;
+    line-height: 43.075px;
+    width: 43.075px;
+}
+.percent {
+    align-items: center;
+    color: #00b14f;
+    display: flex;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    height: 36px;
+    justify-content: center;
+    letter-spacing: -0.6px;
+    line-height: 35.896px;
+    width: 36px;
+}

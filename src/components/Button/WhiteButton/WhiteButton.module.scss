@@ -1,0 +1,20 @@
+.btn-white {
+    background: #fff;
+    border: 1px solid #99e0b9;
+    color: #00b14f;
+    align-items: center;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    font-style: normal;
+    font-weight: 600;
+    gap: 6px;
+    justify-content: center;
+    letter-spacing: 0.175px;
+    line-height: 22px;
+    padding: 8px 16px 8px 12px;
+
+    &:hover {
+        border: 1px solid #00b14f;
+    }
+}

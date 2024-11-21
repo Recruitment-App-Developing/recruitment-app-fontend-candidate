@@ -1,0 +1,61 @@
+//Icon Job detail Infor
+.job-detail-icon {
+    align-items: center;
+    background: linear-gradient(11deg, #00bf5d, #00907c);
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 40px;
+    justify-content: center;
+    padding: 10px;
+    width: 40px;
+}
+
+// Button apply
+.btn-apply {
+    background: #00b14f;
+    color: #fff;
+    width: calc(100% - 144px);
+    align-items: center;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    gap: 6px;
+    height: 40px;
+    justify-content: center;
+    letter-spacing: 0.175px;
+    line-height: 22px;
+    padding: 8px 16px 8px 12px;
+
+    &:hover {
+        background-color: #009643;
+    }
+}
+// Button Save Job
+.btn-save {
+    background: #fff;
+    border: 1px solid #99e0b9;
+    color: #00b14f;
+    width: 130px;
+    align-items: center;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    gap: 6px;
+    height: 40px;
+    justify-content: center;
+    letter-spacing: 0.175px;
+    line-height: 22px;
+    padding: 8px 16px 8px 12px;
+
+    &:hover {
+        border: 1px solid #00b14f;
+    }
+}

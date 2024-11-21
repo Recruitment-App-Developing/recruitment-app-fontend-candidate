@@ -1,0 +1,90 @@
+.wrapper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    border: none;
+    min-height: 36px;
+    padding: 6px 8px;
+    font-family: 'TikTokFont', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    background-color: var(--white);
+
+    + .wrapper {
+        margin-left: 10px;
+    }
+
+    &.disabled {
+        pointer-events: none;
+        opacity: 0.5;
+    }
+}
+// Button type
+.primary {
+    color: var(--white);
+    background-color: var(--primary);
+
+    &:hover {
+        background: linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.06),
+                rgba(0, 0, 0, 0.06)
+            ),
+            rgb(254, 44, 85);
+    }
+}
+.outline {
+    border: 2px solid greenyellow;
+    color: var(--primary);
+    border: 1px solid currentColor;
+    m &:hover {
+        background-color: rgba(254, 44, 85, 0.08);
+    }
+}
+.rounded {
+    border: 2px solid rgba(22, 24, 35, 0.12);
+    background: none rgb(255, 255, 255);
+    color: rgba(22, 24, 35, 0.75);
+    font-weight: 700;
+    font-size: 14px;
+    padding: 0px 8px;
+    min-width: 90px;
+    height: 32px;
+    box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 8px;
+    border-radius: 52px;
+
+    &:hover {
+        border-color: rgba(22, 24, 35, 0.2);
+        background-color: rgb(255, 255, 255);
+    }
+}
+.text {
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+// Button size
+.small {
+    min-width: 88px;
+    padding: 4px 16px;
+}
+.medium {
+    min-height: 36px;
+    min-width: 100px;
+}
+.large {
+    min-width: 140px;
+    padding: 14px 16px;
+}
+
+.leftIcon + .title,
+.title + .rightIcon {
+    margin-left: 8px;
+}
+.leftIcon {
+    display: inline-block;
+    width: 24px;
+    text-align: center;
+}
