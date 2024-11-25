@@ -1,8 +1,10 @@
 import JobList from '~/components/JobList';
+import JobMarket from './JobMarket';
 
 function Home() {
     return (
-        <div className="container flex items-center justify-center">
+        <div className="container flex flex-col items-center justify-center">
+            <JobMarket />
             <JobList />
         </div>
     );

@@ -62,14 +62,13 @@ import SelectCvBox from '../components/ApplyModal/SelectCvBox';
 import LayoutList from './ListForEmployer/LayoutList';
 import { SortingAndSelectingTable } from '~/components/Table';
 import JobList from './ListForEmployer/JobList';
+import Search from '~/pages/Search';
 
 function ComponentUI() {
     return (
         <div className="flex-center w-screen bg-slate-300">
             <div className="flex-center w-[1000px]">
-                <LayoutList>
-                    <JobList />
-                </LayoutList>
+                <LayoutList>{/* <JobList /> */}</LayoutList>
             </div>
             {/* <LayoutList>
                 <table border="1" cellPadding="10" cellSpacing="0">

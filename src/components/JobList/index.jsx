@@ -19,15 +19,15 @@ function JobList() {
         });
     }, [currentPage]);
 
-    useEffect(() => {
-        if (!isHover) {
-            const timeout = setTimeout(() => {
-                if (currentPage == totalPage) setCurrentPage(1);
-                else setCurrentPage((prev) => prev + 1);
-            }, 5000);
-            return () => clearTimeout(timeout);
-        }
-    }, [currentPage, isHover]);
+    // useEffect(() => {
+    //     if (!isHover) {
+    //         const timeout = setTimeout(() => {
+    //             if (currentPage == totalPage) setCurrentPage(1);
+    //             else setCurrentPage((prev) => prev + 1);
+    //         }, 5000);
+    //         return () => clearTimeout(timeout);
+    //     }
+    // }, [currentPage, isHover]);
 
     return (
         <div
