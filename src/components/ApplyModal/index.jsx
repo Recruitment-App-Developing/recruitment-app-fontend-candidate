@@ -20,6 +20,9 @@ export default function ApplyModal({ jobId, jobName, open, onClose }) {
         jobId: jobId,
         cvId: null,
     });
+
+    console.log(applicationInfor);
+
     const [selected, setSelected] = useState('LASTEST_CV');
 
     useEffect(() => {
@@ -53,8 +56,8 @@ export default function ApplyModal({ jobId, jobName, open, onClose }) {
                 </h2>
                 <button
                     onClick={onClose}
-                    className="flex-center hover:bg-success/15 hover:text-success h-8 w-8 rounded-full
-                        bg-gray-300 p-2 text-xl text-gray-600"
+                    className="flex-center h-8 w-8 rounded-full bg-gray-300 p-2 text-xl text-gray-600
+                        hover:bg-success/15 hover:text-success"
                 >
                     <FontAwesomeIcon icon={faClose} />
                 </button>
@@ -95,7 +98,7 @@ export default function ApplyModal({ jobId, jobName, open, onClose }) {
                                 CV ứng tuyển gần nhất:
                             </h3>
                         </div>
-                        <Link className="flex-center text-success font-semibold">
+                        <Link className="flex-center font-semibold text-success">
                             Xem
                         </Link>
                     </div>
@@ -139,7 +142,7 @@ export default function ApplyModal({ jobId, jobName, open, onClose }) {
                 </button>
                 <button
                     onClick={handleSubmit}
-                    className="bg-success w-full rounded-md py-2 text-white"
+                    className="w-full rounded-md bg-success py-2 text-white"
                 >
                     Nộp hồ sơ ứng tuyển
                 </button>

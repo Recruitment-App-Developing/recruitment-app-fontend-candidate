@@ -19,6 +19,8 @@ const data = [
 ];
 
 function ActionHeaderAuth() {
+    const user = JSON.parse(localStorage.getItem('user'));
+
     return (
         <div className="container flex h-full items-center justify-center gap-3">
             <div className="items-center">
@@ -56,7 +58,7 @@ function ActionHeaderAuth() {
                     {
                         <div className="flex h-10 w-16 items-center rounded-[40px] bg-[#fafafa] pb-1 pl-1 pr-[6px] pt-1">
                             <img
-                                src={images.avatar}
+                                src={user?.avatar}
                                 width="50px"
                                 height="50px"
                                 alt="Personal Image"

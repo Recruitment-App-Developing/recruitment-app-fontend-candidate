@@ -27,7 +27,9 @@ function JobBox({ children, jobId }) {
             render={(attrs, index) => (
                 <div
                     key={index}
-                    className={clsx('flex h-[533px] w-[529px] flex-col')}
+                    className={clsx(
+                        'flex h-[533px] w-[529px] flex-col bg-white',
+                    )}
                     {...attrs}
                 >
                     <BoxHeader className="sticky" data={jobDetail} />

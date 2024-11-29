@@ -12,11 +12,15 @@ import { CompanyList, DetailCompany } from '~/pages/Company';
 import { AddAJob } from '~/pages/AddJob';
 import CvProfile from '~/pages/CvProfile';
 import RegisterAccount from '~/pages/RegisterAccount';
+import JobSearchPage from '~/pages/JobSearchPage';
+import ManageCvPage from '~/pages/ManageCv';
+import MyInfor from '~/pages/MyInfor';
 
 const publicRoutes = [
     { path: '/testUI', component: ComponentUI },
 
     { path: '/', component: Home, layout: DefaultLayout },
+    { path: '/search-job', component: JobSearchPage, layout: DefaultLayout },
     { path: '/job-detail/:jobId', component: JobDetail, layout: DefaultLayout },
     { path: '/add-job', component: AddAJob, layout: DefaultLayout },
     { path: '/company', component: CompanyList, layout: DefaultLayout },
@@ -33,6 +37,8 @@ const publicRoutes = [
         component: CvProfile,
         layout: DefaultLayout,
     },
+    { path: '/my-infor', component: MyInfor, layout: DefaultLayout },
+    { path: '/manage-cv', component: ManageCvPage, layout: DefaultLayout },
 ];
 const protectedRoutes = [];
 

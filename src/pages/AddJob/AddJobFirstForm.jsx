@@ -46,8 +46,6 @@ export default function AddJobFirstForm({ job, setJob }) {
         }));
     };
 
-    console.log(job);
-
     return (
         <div className="bg-none">
             <div className="flex flex-col gap-3">

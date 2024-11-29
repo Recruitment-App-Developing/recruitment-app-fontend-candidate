@@ -44,6 +44,8 @@ module.exports = {
         black: "rgb( 0, 0, 0)",
         bodyColor: "rgb( 33, 37, 41)",
         bodyBg: "rgb( 255, 255, 255)",
+        "transparent-white": "rgba(255, 255, 255, 0)",
+        "dark-blue": "#212f3f",
       },
       backgroundImage: {
         "auth-bg-image":

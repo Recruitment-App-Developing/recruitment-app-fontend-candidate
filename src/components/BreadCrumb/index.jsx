@@ -2,16 +2,16 @@ import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Fragment } from 'react';
 
-function BreadCrumb({ data = ['Trang chủ'], title }) {
+function BreadCrumb({ data = [{ title: 'Trang chủ', link: '/' }], title }) {
     const renderData = () => {
         return data.map((item, index) => {
             return (
                 <Fragment key={index}>
                     <a
-                        href="#"
+                        href={item.link}
                         className="text-base font-semibold tracking-[0.175px] text-[#00b14f]"
                     >
-                        {item}
+                        {item.title}
                     </a>
                     {index != data.length - 1 && (
                         <FontAwesomeIcon

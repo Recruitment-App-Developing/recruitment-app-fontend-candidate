@@ -4,43 +4,6 @@ import clsx from 'clsx';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-// const data = {
-//     onlineCv: [
-//         {
-//             id: 'ewjijgsp-ewjnl-ewmtkl-dsfmk',
-//             name: 'My CV - English',
-//         },
-//         {
-//             id: 'ewjgsp-ewjn-ewmtkl-dfmk',
-//             name: 'Thong Cv First',
-//         },
-//     ],
-//     uploadCv: [
-//         {
-//             id: 'ewijgsp-ewjnl-ewmtkl-dsfmk',
-//             name: 'My Intern Java',
-//         },
-//     ],
-// };
-
-// const data = [
-//     {
-//         id: '1',
-//         name: 'My CV - English',
-//         cvType: 'ONLINE',
-//     },
-//     {
-//         id: '2',
-//         name: 'Thong Cv First',
-//         cvType: 'ONLINE',
-//     },
-//     {
-//         id: '3',
-//         name: 'My Intern Java',
-//         cvType: 'UPLOAD',
-//     },
-// ];
-
 export default function BriefCvList({
     jobId,
     className,
@@ -67,9 +30,17 @@ export default function BriefCvList({
                                 }
                             </h3>
                         </span>
-                        <Link className="flex-center text-success font-semibold">
+                        <a
+                            href={
+                                cvList.filter(
+                                    (item) => item.id === applicationInfor.cvId,
+                                )[0].cvLink
+                            }
+                            target="_blank"
+                            className="flex-center font-semibold text-success"
+                        >
                             Xem
-                        </Link>
+                        </a>
                     </div>
                     <button
                         onClick={() =>
@@ -94,6 +65,7 @@ export default function BriefCvList({
                                     cvId: item.id,
                                 })
                             }
+                            link={item.cvLink}
                         >
                             {item.name}
                         </SelectCvBox>
@@ -110,6 +82,7 @@ export default function BriefCvList({
                                             cvId: item.id,
                                         })
                                     }
+                                    link={item.cvLink}
                                 >
                                     {item.name}
                                 </SelectCvBox>

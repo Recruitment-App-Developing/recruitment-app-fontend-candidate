@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
+    faBuilding,
     faCheckToSlot,
     faFileClipboard,
     faFilePen,
@@ -16,28 +17,17 @@ import { faFileLines, faIdBadge } from '@fortawesome/free-regular-svg-icons';
 import ActionHeaderNoAuth from './ActionHeader/ActionHeaderNoAuth';
 import ActionHeaderAuth from './ActionHeader/ActionHeaderAuth';
 import useAuth from '~/hooks/useAuth';
+import CvProfileItem from './MenuItem/CvProfileItem';
 
 const MENU = [
     {
         title: 'Việc làm',
         data: [
             {
-                title: 'Tìm việc làm',
+                title: <a href="/search-job">Tìm việc làm</a>,
                 icon: (
                     <FontAwesomeIcon icon={faMagnifyingGlass} color="#00b14f" />
                 ),
-            },
-            {
-                title: 'Việc làm phù hợp',
-                icon: <FontAwesomeIcon icon={faCheckToSlot} color="#00b14f" />,
-            },
-            {
-                title: 'Việc làm IT',
-                icon: <FontAwesomeIcon icon={faLaptopCode} color="#00b14f" />,
-            },
-            {
-                title: 'Việc làm Senior',
-                icon: <FontAwesomeIcon icon={faMedal} color="#00b14f" />,
             },
         ],
     },
@@ -45,45 +35,31 @@ const MENU = [
         title: 'Hồ sơ & CV',
         data: [
             {
-                title: 'Mẫu CV',
+                title: <a href="/my-infor">Thông tin cá nhân</a>,
                 icon: (
                     <FontAwesomeIcon icon={faFileSignature} color="#00b14f" />
                 ),
             },
             {
-                title: 'Mẫu Cover Letter',
-                icon: <FontAwesomeIcon icon={faFileLines} color="#00b14f" />,
-            },
-            {
-                title: 'Dịch vụ tư vấn CV',
+                title: <a href="/manage-cv">Quản lý CV</a>,
                 icon: (
                     <FontAwesomeIcon icon={faFileSignature} color="#00b14f" />
                 ),
             },
             {
-                title: 'Hướng dẫn viết CV theo ngành nghề',
-                icon: <FontAwesomeIcon icon={faFilePen} color="#00b14f" />,
-            },
-            {
-                title: 'Thư viện CV theo ngành nghề',
-                icon: (
-                    <FontAwesomeIcon icon={faFileClipboard} color="#00b14f" />
-                ),
-            },
-            {
-                title: 'TopCV Profile',
+                title: <CvProfileItem />,
                 icon: <FontAwesomeIcon icon={faIdBadge} color="#00b14f" />,
             },
         ],
     },
     {
         title: 'Công ty',
-    },
-    {
-        title: 'Công cụ',
-    },
-    {
-        title: 'Cẩm nang nghề nghiệp',
+        data: [
+            {
+                title: <a href="/company">Danh sách công ty</a>,
+                icon: <FontAwesomeIcon icon={faBuilding} color="#00b14f" />,
+            },
+        ],
     },
 ];
 
@@ -127,10 +103,9 @@ export default function Header() {
                     {isAuthenticated ? (
                         <div className="flex">
                             <ActionHeaderAuth />
-
                             <button
                                 onClick={logout}
-                                className="bg-success text-nowrap rounded-md px-4 py-3 text-white"
+                                className="text-nowrap rounded-md bg-success px-4 py-3 text-white"
                             >
                                 Đăng xuất
                             </button>

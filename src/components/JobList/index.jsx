@@ -36,13 +36,13 @@ function JobList() {
             onMouseLeave={() => setIsHover(false)}
         >
             <div className="grid h-[350px] w-full auto-rows-auto grid-cols-3 gap-x-6 gap-y-6">
-                {jobList?.map((item, index) => {
-                    return <FeatureJobItem key={index} data={item} />;
+                {jobList?.map((item) => {
+                    return <FeatureJobItem key={item.id} data={item} />;
                 })}
             </div>
             <Pagination
                 className="flex-center"
-                onChange={(e, p) => {
+                onChange={(_e, p) => {
                     setCurrentPage(p);
                 }}
                 page={currentPage}

@@ -56,7 +56,7 @@ function BoxHeader({ className, data }) {
                     </label>
                 </div>
             </div>
-            <div className="flex gap-3">
+            <div className="flex flex-wrap gap-3">
                 <div
                     className="flex h-6 items-center gap-2 rounded-[4px] bg-[#f2f4f5] pb-1 pl-2 pr-3 pt-1
                         text-[#7f878f]"
@@ -65,7 +65,7 @@ function BoxHeader({ className, data }) {
                         icon={faLocationDot}
                         className="text-center text-xs font-black tracking-[0]"
                     />
-                    <span className="text-left text-xs font-medium tracking-[0.0125em]">
+                    <span className="truncate text-wrap text-left text-xs font-medium tracking-[0.0125em]">
                         {data?.address}
                     </span>
                 </div>

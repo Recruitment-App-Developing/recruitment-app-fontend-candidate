@@ -33,6 +33,7 @@ function FormLogin() {
         loginApi(form).then((data) => {
             toast.success(data.message);
             login(data.data.token);
+            localStorage.setItem('user', JSON.stringify(data.data.infor));
             navigate('/');
         });
     };
@@ -76,7 +77,7 @@ function FormLogin() {
                     placeholder="Enter your password"
                     leftIcon={<FontAwesomeIcon icon={faLock} color="green" />}
                 />
-                <div className="text-success mb-6 h-5 w-[600px] text-right text-sm font-medium leading-5">
+                <div className="mb-6 h-5 w-[600px] text-right text-sm font-medium leading-5 text-success">
                     <a href="#">Quên mật khẩu</a>
                 </div>
                 <LoginButton

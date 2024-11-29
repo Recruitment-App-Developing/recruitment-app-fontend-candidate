@@ -1,4 +1,4 @@
-@use url('./scroll-bar.css');
+@import url('./scroll-bar.css');
 
 @tailwind base;
 @tailwind components;

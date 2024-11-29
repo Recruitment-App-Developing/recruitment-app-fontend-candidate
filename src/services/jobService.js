@@ -8,7 +8,11 @@ export const fetchListJob = async (currentPage = 1) => {
     );
     return res.data;
 };
-
+export const fetchSearchJob = async (data) => {
+    console.log(`job/search-job?${data}`);
+    const res = await axiosInstance.get(`job/search-job?${data}`);
+    return res.data;
+};
 export const fetchListJobByCompany = async (pageSize = 5, currentPage = 5) => {
     const res = await axiosInstance.get(
         `job/byCompany?pageSize=${pageSize}&currentPage=${currentPage}&sortDir=desc`,

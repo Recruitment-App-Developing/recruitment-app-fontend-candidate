@@ -14,25 +14,7 @@ import { GrayBox } from '~/components/Box';
 import GreenButton from '~/components/Button/GreenButton';
 import ApplyButton from '~/components/Button/ApplyButton/ApplyButton';
 
-function JobDefaultBox({
-    data = {
-        id: 15,
-        name: 'Nhân Viên Tư Vấn Tuyển Sinh Chỉ Tuyển Nữ, Kinh Nghiệm Telesales Từ 6 Tháng Trở Lên',
-        provinces: ['Bình Phước', 'Bắc Giang'],
-        company: {
-            id: 1,
-            name: 'Công ty cổ phần TopCV',
-            logo: 'https://res.cloudinary.com/dtcokd0bb/image/upload/v1720661226/TopCV/Image/Avatar/fygskc2luq5kuyckuuq5.png',
-            banner: null,
-            urlCom: 'http://topcv.com',
-            detailIntro: 'TopCV',
-        },
-        salary: '10 triệu đồng',
-        applyTime: 0,
-        lastUpdated: 0,
-        isApply: false,
-    },
-}) {
+function JobDefaultBox({ data }) {
     const [heart, setHeart] = useState(false);
     let province = data?.provinces[0];
     if (data?.provinces.length > 1) {
@@ -54,40 +36,40 @@ function JobDefaultBox({
 
     return (
         <div
-            className="mb-4 ml-auto mr-auto mt-auto flex cursor-pointer gap-4 rounded-[5px]
+            className="mb-4 ml-auto mr-auto mt-auto flex h-[152px] cursor-pointer gap-4 rounded-[5px]
                 border-[2px] border-solid border-gray-300 bg-white p-3 transition-all
                 duration-100"
         >
             <a
                 className="aspect-[1/1] h-full"
-                href={data.company.urlCom}
+                href={data?.company?.urlCom}
                 target="_blank"
             >
                 <img
                     className="h-[100px] w-[100px] object-contain"
-                    src={data.company.logo}
+                    src={data?.company?.logo}
                     alt=""
                 />
             </a>
             <div className="container flex flex-col justify-between">
                 <div>
                     <div className="mb-2 flex items-baseline justify-between gap-4">
-                        <ToolTip content={data.name}>
+                        <ToolTip content={data?.name}>
                             <h3
                                 className={clsx(
                                     'line-clamp-2 truncate text-wrap text-sm font-semibold text-black',
                                 )}
                             >
                                 <a href="#" target="_blank">
-                                    {data.name}
+                                    {data?.name}
                                 </a>
                             </h3>
                         </ToolTip>
                         <span className="text-nowrap text-sm font-semibold text-success">
-                            {data.salary}
+                            {data?.salary}
                         </span>
                     </div>
-                    <ToolTip content={data.company.name}>
+                    <ToolTip content={data?.company.name}>
                         <a
                             href="#"
                             className="flex w-fit items-center justify-center gap-2 overflow-hidden text-ellipsis
@@ -98,7 +80,7 @@ function JobDefaultBox({
                                 icon={faBuilding}
                                 className="text-base text-success"
                             />
-                            <span>{data.company.name}</span>
+                            <span>{data?.company.name}</span>
                         </a>
                     </ToolTip>
                 </div>
@@ -127,7 +109,9 @@ function JobDefaultBox({
                     <div className="flex h-fit w-fit items-end justify-center pr-6">
                         <div className="flex items-center justify-center gap-3">
                             {data?.isApply ? (
-                                <button>Ứng tuyển lại</button>
+                                <button className="w-36 rounded-md bg-success py-2 text-white">
+                                    Ứng tuyển lại
+                                </button>
                             ) : (
                                 <div className="w-36">
                                     <ApplyButton

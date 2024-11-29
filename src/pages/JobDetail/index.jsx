@@ -21,7 +21,7 @@ import { useEffect, useState } from 'react';
 import { fetchDetailPageJob } from '~/services/jobService';
 import ListImage from './ListImage';
 
-const breadcrumb = ['Trang chủ'];
+const breadcrumb = [{ title: 'Trang chủ', link: '/' }];
 
 function JobDetail() {
     const { jobId } = useParams();
@@ -34,7 +34,11 @@ function JobDetail() {
     return (
         <div className="justify-top container flex flex-col items-center">
             <BreadCrumb
-                data={[...breadcrumb, data?.mainIndustry.name, data?.name]}
+                data={[
+                    ...breadcrumb,
+                    { title: data?.mainIndustry.name, link: '/' },
+                    { title: data?.name, link: `/job-detail/${jobId}` },
+                ]}
                 title={data?.title}
             />
             {/* Job Detail Wrapper */}

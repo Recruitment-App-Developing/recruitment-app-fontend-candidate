@@ -12,12 +12,14 @@ export default function SelectCvBox({ children, link, onClick }) {
         >
             <div className="flex-center gap-2">
                 {children}
-                <div className="text-success">Xem</div>
+                <a href={link} target="_blank" className="text-success">
+                    Xem
+                </a>
             </div>
             {isMount && (
                 <button
                     onClick={onClick}
-                    className="flex-center bg-success rounded-md px-3 py-1 text-xs font-semibold text-white"
+                    className="flex-center rounded-md bg-success px-3 py-1 text-xs font-semibold text-white"
                 >
                     Chọn CV
                 </button>

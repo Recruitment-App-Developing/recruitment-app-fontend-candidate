@@ -14,9 +14,7 @@ import lgThumbnail from 'lightgallery/plugins/thumbnail';
 import lgZoom from 'lightgallery/plugins/zoom';
 
 function ListImage({ imageList }) {
-    const onInit = () => {
-        console.log('lightGallery has been initialized');
-    };
+    const onInit = () => {};
     return (
         <div>
             <LightGallery

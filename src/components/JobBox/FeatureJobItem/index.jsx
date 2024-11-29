@@ -48,21 +48,23 @@ function JobItem({ data }) {
                         {data.company.name}
                     </a>
                 </ToolTip>
-                <div className="container mt-2 flex items-center justify-between">
-                    <span
-                        className="mr-1 text-ellipsis rounded bg-[#f4f5f5] pb-1 pl-2 pr-2 pt-1 text-xs font-medium
-                            leading-4"
-                    >
-                        {data.salary}
-                    </span>
-                    <ToolTip content={data.cities}>
+                <div className="container mt-2 flex items-center justify-between gap-1">
+                    <div className="overflow-hidden">
                         <span
-                            className="mr-auto text-ellipsis rounded bg-[#f4f5f5] pb-1 pl-2 pr-2 pt-1 text-xs
-                                font-medium leading-4"
+                            className="mr-1 text-ellipsis rounded bg-[#f4f5f5] pb-1 pl-2 pr-2 pt-1 text-xs font-medium
+                                leading-4"
                         >
-                            {data.cities}
+                            {data.salary}
                         </span>
-                    </ToolTip>
+                        <ToolTip content={data.cities}>
+                            <span
+                                className="mr-auto text-ellipsis rounded bg-[#f4f5f5] pb-1 pl-2 pr-2 pt-1 text-xs
+                                    font-medium leading-4"
+                            >
+                                {data.cities}
+                            </span>
+                        </ToolTip>
+                    </div>
                     <button
                         onClick={() => {
                             setHeart(!heart);

@@ -11,12 +11,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Fragment, useEffect, useState } from 'react';
-import {
-    DropdownSearchBox,
-    GrayBox,
-    RemindUpdCvBox,
-    ReportBox,
-} from '~/components/Box';
+import { GrayBox, RemindUpdCvBox, ReportBox } from '~/components/Box';
 import { CompanyItem, CompQuickViewBox } from '~/components/CompanyComponents';
 import Dropdown from '~/components/Dropdown';
 import InputTextIcon from '~/components/InputTextIcon';
@@ -62,25 +57,15 @@ import SelectCvBox from '../components/ApplyModal/SelectCvBox';
 import LayoutList from './ListForEmployer/LayoutList';
 import { SortingAndSelectingTable } from '~/components/Table';
 import JobList from './ListForEmployer/JobList';
-import Search from '~/pages/Search';
+import CvItem from '~/pages/ManageCv/CvItem';
+import UploadCvModel from '~/components/Modal/UploadCvModal';
+import EditCvModal from '~/components/Modal/EditCvModal';
+import ConfirmDeleteCv from '~/components/Modal/ConfirmDeleteCv';
 
 function ComponentUI() {
     return (
         <div className="flex-center w-screen bg-slate-300">
-            <div className="flex-center w-[1000px]">
-                <LayoutList>{/* <JobList /> */}</LayoutList>
-            </div>
-            {/* <LayoutList>
-                <table border="1" cellPadding="10" cellSpacing="0">
-                    <tr>
-                        <td>Thao tác</td>
-                        <td>Tin tuyển dụng</td>
-                        <td>Số lượt xem</td>
-                        <td>Số lượt ứng tuyển</td>
-                        <td>Tỷ lệ ứng tuyển</td>
-                    </tr>
-                </table>
-            </LayoutList> */}
+            <ConfirmDeleteCv open={true} />
         </div>
     );
     // const [searchText, setSearchText] = useState('');

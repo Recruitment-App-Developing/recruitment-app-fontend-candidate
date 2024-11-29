@@ -1,11 +1,11 @@
 import { faCameraAlt, faPen } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState } from 'react';
-import ImageCropper from '~/components/ImageCropper';
-import { cn } from '~/lib/utils';
-import { base64Converter } from '~/utils/base64Converter';
+import ImageCropper from '../ImageCropper';
+import { base64Converter } from '../../utils/base64Converter';
+import clsx from 'clsx';
 
-export default function ImageItem({ src, onChange, height, width }) {
+export default function ImageItem({ src, onChange }) {
     const [open, setOpen] = useState(false);
     const [imgSrc, setImgSrc] = useState();
     const [preview, setPreview] = useState(src);
@@ -38,13 +38,7 @@ export default function ImageItem({ src, onChange, height, width }) {
                 type="file"
                 onChange={handleInputChnage}
             />
-            <div
-                className={cn(
-                    'relative h-20 w-20 rounded-full border',
-                    height,
-                    width,
-                )}
-            >
+            <div className="relative h-20 w-20 rounded-full border">
                 <img
                     src={preview}
                     alt="User avatar"
@@ -52,7 +46,7 @@ export default function ImageItem({ src, onChange, height, width }) {
                 />
                 <button
                     onClick={() => setOpen(true)}
-                    className={cn(
+                    className={clsx(
                         'absolute h-full w-full items-center justify-center rounded-full',
                         'bg-gray-400/15 text-white',
                         'opacity-0 transition-all hover:opacity-100',

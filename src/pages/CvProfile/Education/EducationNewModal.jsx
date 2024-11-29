@@ -66,14 +66,13 @@ export default function EducationNewModal({ open, setOpen, setEducationList }) {
                 style: {
                     borderRadius: '4px',
                     width: '800px',
-                    height: '700px',
                     padding: '15px 30px',
                 },
             }}
         >
-            <div className="flex h-full w-full flex-col">
+            <div className="flex h-full w-full flex-col gap-2">
                 <div className="flex justify-between">
-                    <h2 className="text-lg">Học vấn</h2>
+                    <h2 className="text-2xl font-bold">Học vấn</h2>
                     <button onClick={() => setOpen(false)}>
                         <FontAwesomeIcon icon={faXmark} />
                     </button>
@@ -100,7 +99,7 @@ export default function EducationNewModal({ open, setOpen, setEducationList }) {
                         })
                     }
                 />
-                <h2>Thời gian</h2>
+                <h2 className="font-medium">Thời gian</h2>
                 <div className="flex items-center">
                     <Checkbox
                         checked={checked}
@@ -271,8 +270,8 @@ export default function EducationNewModal({ open, setOpen, setEducationList }) {
                         </div>
                     )}
                 </div>
-                <div>
-                    <h2>Mô tả chi tiết</h2>
+                <div className="flex flex-col gap-2">
+                    <h2 className="font-medium">Mô tả chi tiết</h2>
                     <ReactQuill
                         theme="snow"
                         placeholder="Mô tả chi tiết quá trình học để nhà tuyển dụng có thể hiểu bạn hơn"
