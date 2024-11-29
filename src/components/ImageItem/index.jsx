@@ -4,8 +4,9 @@ import { useEffect, useState } from 'react';
 import ImageCropper from '../ImageCropper';
 import { base64Converter } from '../../utils/base64Converter';
 import clsx from 'clsx';
+import { cn } from '~/lib/utils';
 
-export default function ImageItem({ src, onChange }) {
+export default function ImageItem({ src, onChange, className }) {
     const [open, setOpen] = useState(false);
     const [imgSrc, setImgSrc] = useState();
     const [preview, setPreview] = useState(src);
@@ -42,7 +43,10 @@ export default function ImageItem({ src, onChange }) {
                 <img
                     src={preview}
                     alt="User avatar"
-                    className="absolute h-full w-full rounded-full object-cover"
+                    className={cn(
+                        'absolute h-full w-full rounded-full object-cover',
+                        className,
+                    )}
                 />
                 <button
                     onClick={() => setOpen(true)}

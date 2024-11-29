@@ -60,7 +60,10 @@ function JobDefaultBox({ data }) {
                                     'line-clamp-2 truncate text-wrap text-sm font-semibold text-black',
                                 )}
                             >
-                                <a href="#" target="_blank">
+                                <a
+                                    href={`/job-detail/${data?.id}`}
+                                    target="_blank"
+                                >
                                     {data?.name}
                                 </a>
                             </h3>
