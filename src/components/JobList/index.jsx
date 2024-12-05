@@ -12,7 +12,6 @@ function JobList() {
     const [jobList, setJobList] = useState(null);
     useEffect(() => {
         fetchListJob(currentPage - 1).then((data) => {
-            console.log(data.data);
             setJobList(data.data);
             setTotalPage(data.meta.totalPages);
             //setCurrentPage(data.meta.currentPage)

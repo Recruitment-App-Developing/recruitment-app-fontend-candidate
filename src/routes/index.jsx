@@ -15,6 +15,7 @@ import RegisterAccount from '~/pages/RegisterAccount';
 import JobSearchPage from '~/pages/JobSearchPage';
 import ManageCvPage from '~/pages/ManageCv';
 import MyInfor from '~/pages/MyInfor';
+import ApplcationHistory from '~/pages/ApplicationHistory';
 
 const publicRoutes = [
     { path: '/testUI', component: ComponentUI },
@@ -39,6 +40,11 @@ const publicRoutes = [
     },
     { path: '/my-infor', component: MyInfor, layout: DefaultLayout },
     { path: '/manage-cv', component: ManageCvPage, layout: DefaultLayout },
+    {
+        path: '/application-history',
+        component: ApplcationHistory,
+        layout: DefaultLayout,
+    },
 ];
 const protectedRoutes = [];
 

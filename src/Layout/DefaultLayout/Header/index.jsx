@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
+    faAddressBook,
     faBuilding,
     faCheckToSlot,
     faFileClipboard,
@@ -28,6 +29,10 @@ const MENU = [
                 icon: (
                     <FontAwesomeIcon icon={faMagnifyingGlass} color="#00b14f" />
                 ),
+            },
+            {
+                title: <a href="/application-history">Lịch sử ứng tuyển</a>,
+                icon: <FontAwesomeIcon icon={faAddressBook} color="#00b14f" />,
             },
         ],
     },

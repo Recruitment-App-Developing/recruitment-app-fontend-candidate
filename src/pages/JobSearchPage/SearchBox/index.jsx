@@ -26,7 +26,6 @@ export default function SearchBox() {
 
     useEffect(() => {
         const queryString = new URLSearchParams(condition).toString();
-        console.log(queryString);
         fetchSearchJob(queryString).then((data) => setJobList(data.data));
     }, [condition]);
 
