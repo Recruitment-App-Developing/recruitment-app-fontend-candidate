@@ -1,12 +1,16 @@
 import axiosInstance from '~/utils/axiosInstance';
 
-export const fetchCvList = async () => {
-    const res = axiosInstance.get(`cv/my-cv`);
+export const fetchCvList = async (currentPage = 0) => {
+    const res = axiosInstance.get(
+        `cv/my-cv?pageSize=100&currentPage=${currentPage}`,
+    );
     return (await res).data;
 };
 
 export const fetchAddCv = async (data) => {
-    const res = axiosInstance.post(`cv/add`, data);
+    const res = axiosInstance.post(`cv/add`, data, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+    });
     return (await res).data;
 };
 

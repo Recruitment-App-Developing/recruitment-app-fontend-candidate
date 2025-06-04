@@ -1,6 +1,5 @@
 export default function CvProfileItem() {
     const user = JSON.parse(localStorage.getItem('user'));
-    console.log(user?.cvProfileId);
 
     if (user?.cvProfileId)
         return (

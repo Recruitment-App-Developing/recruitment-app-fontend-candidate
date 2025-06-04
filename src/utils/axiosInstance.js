@@ -68,7 +68,7 @@ axiosInstance.interceptors.response.use(
 
         console.error(error);
         if (error.response?.status !== 410) {
-            toast.error(error.response?.data?.message || error?.message);
+            // toast.error(error.response?.data?.message || error?.message);
         }
 
         return Promise.reject(error);

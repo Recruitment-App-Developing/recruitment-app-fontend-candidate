@@ -6,6 +6,9 @@ import {
     WorkMethodIcon,
 } from '~/components/Icon';
 import IconJobDetailInfor from '../JobDetailTitleBox/IconJobDetailInfor';
+import { rankData } from '~/constants/RankData';
+import { workMethodData } from '~/constants/WorkMethodData';
+import { genderData } from '~/constants/GenderData';
 
 function JobGeneralInfor({ data }) {
     return (
@@ -16,7 +19,9 @@ function JobGeneralInfor({ data }) {
             <IconJobDetailInfor
                 icon={<BadgetIcon />}
                 title="Cấp bậc"
-                value={data.jobPosition}
+                value={
+                    rankData.find((item) => item.id === data.jobPosition).name
+                }
             />
             <IconJobDetailInfor
                 icon={<ExperienceIcon />}
@@ -33,12 +38,17 @@ function JobGeneralInfor({ data }) {
             <IconJobDetailInfor
                 icon={<WorkMethodIcon />}
                 title="Hình thức làm việc"
-                value={data.workMethod}
+                value={
+                    workMethodData.find((item) => item.id === data.workMethod)
+                        .name
+                }
             />
             <IconJobDetailInfor
                 icon={<SinglePeopleIcon />}
                 title="Giới tính"
-                value={data.sexRequired}
+                value={
+                    genderData.find((item) => item.id === data.sexRequired).name
+                }
             />
         </div>
     );

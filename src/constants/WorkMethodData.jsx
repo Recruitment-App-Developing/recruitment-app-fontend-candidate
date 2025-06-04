@@ -1,12 +1,12 @@
 export const workMethodData = [
     {
         id: 'FULLTIME',
-        name: 'Full-time',
+        name: 'Toàn thời gian',
         description: 'Toàn thời gian',
     },
     {
         id: 'PARTTIME',
-        name: 'Part-time',
+        name: 'Bán thời gian',
         description: 'Bán thời gian',
     },
     {

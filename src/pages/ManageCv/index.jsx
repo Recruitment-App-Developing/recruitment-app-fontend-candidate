@@ -1,21 +1,27 @@
 import { faUpload } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import CvItem from './CvItem';
-import { Avatar } from '@mui/material';
+import { Avatar, Pagination } from '@mui/material';
 import { useEffect, useState } from 'react';
 import UploadCvModel from '~/components/Modal/UploadCvModal';
 import { fetchCvList } from '~/services/cvService';
 
 export default function ManageCvPage() {
     const user = JSON.parse(localStorage.getItem('user'));
+    const [currentPage, setCurrentPage] = useState(0);
+    const [totalPage, setTotalPage] = useState(0);
 
     const [isOpen, setIsOpen] = useState(false);
     const [cvList, setCvList] = useState();
     const [updateChange, setUpdateChange] = useState(false);
 
     useEffect(() => {
-        fetchCvList().then((data) => setCvList(data.data));
-    }, [isOpen, updateChange]);
+        fetchCvList(currentPage).then((data) => {
+            setCvList(data.data.data);
+            // setCurrentPage(data.data.meta.currentPage);
+            setTotalPage(data.data.meta.totalPages);
+        });
+    }, [currentPage, isOpen, updateChange]);
 
     return (
         <div className="mt-6 flex gap-5">
@@ -38,16 +44,28 @@ export default function ManageCvPage() {
                     />
                 </div>
                 {cvList ? (
-                    <div className="grid grid-cols-2 gap-x-6 gap-y-6">
-                        {cvList?.map((item) => (
-                            <CvItem
-                                key={item.id}
-                                data={item}
-                                setUpdateChange={() =>
-                                    setUpdateChange(!updateChange)
-                                }
-                            />
-                        ))}
+                    <div>
+                        <div className="grid grid-cols-2 gap-x-6 gap-y-6">
+                            {cvList?.map((item) => (
+                                <CvItem
+                                    key={item.id}
+                                    data={item}
+                                    setUpdateChange={() =>
+                                        setUpdateChange(!updateChange)
+                                    }
+                                />
+                            ))}
+                        </div>
+                        <Pagination
+                            className="flex-center"
+                            onChange={(_e, p) => {
+                                setCurrentPage(p - 1);
+                            }}
+                            page={currentPage + 1}
+                            count={totalPage}
+                            variant="outlined"
+                            color="primary"
+                        />
                     </div>
                 ) : (
                     <div className="mt-5 flex w-full flex-col items-center justify-center">

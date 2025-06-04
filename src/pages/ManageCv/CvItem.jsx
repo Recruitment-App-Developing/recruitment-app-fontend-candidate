@@ -7,19 +7,55 @@ import {
     faTurnUp,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import axios from 'axios';
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 import ConfirmDeleteCv from '~/components/Modal/ConfirmDeleteCv';
 import EditCvModal from '~/components/Modal/EditCvModal';
+import axiosInstance from '~/utils/axiosInstance';
 
 export default function CvItem({ data, setUpdateChange = () => {} }) {
     const [isOpen, setIsOpen] = useState(false);
     const [isDeleteOpen, setIsDeleteOpen] = useState(false);
 
+    const openCvPdf = (cvId) => {
+        axiosInstance
+            .get(`cv/get-one/${cvId}`, {
+                responseType: 'blob',
+                headers: {
+                    Accept: 'application/pdf',
+                },
+            })
+            .then((response) => {
+                if (response.status === 200 && response.data) {
+                    const file = new Blob([response.data], {
+                        type: 'application/pdf',
+                    });
+
+                    const fileURL = URL.createObjectURL(file);
+
+                    const newWindow = window.open(fileURL);
+                    if (!newWindow) {
+                        alert(
+                            'Trình duyệt đã chặn popup. Vui lòng cho phép để xem file PDF.',
+                        );
+                    }
+                } else {
+                    console.error('Không nhận được file PDF hợp lệ');
+                }
+            })
+            .catch((error) => {
+                toast.error('Lỗi khi tải PDF');
+                console.error('Lỗi khi tải PDF:', error);
+            });
+    };
+
     return (
         <div className="group relative mb-4 h-[310px] w-full overflow-hidden rounded-md">
             <img
-                className="z-1 absolute left-0 top-0 h-full w-full transform object-cover transition
+                className="z-1 absolute left-0 top-0 h-full w-full transform object-contain transition
                     group-hover:scale-105"
+                style={{ aspectRatio: '1 / 1.414' }}
                 src={
                     data?.cvLink
                         ? data?.cvLink
@@ -34,6 +70,7 @@ export default function CvItem({ data, setUpdateChange = () => {} }) {
                 <div className="absolute right-4 top-4">
                     <a
                         href=""
+                        target="_blank"
                         className="block cursor-pointer rounded-xl bg-white px-2 py-1 text-[12px] font-bold
                             leading-4 text-[#212f3f]"
                     >
@@ -45,14 +82,13 @@ export default function CvItem({ data, setUpdateChange = () => {} }) {
                 </div>
                 <div className="z-3 absolute bottom-4 left-4 right-4 text-white">
                     <h4 className="mb-3 flex">
-                        <a
-                            href={data.cvLink}
-                            target="_blank"
+                        <button
+                            onClick={() => openCvPdf(data.id)}
                             className="mr-2 line-clamp-2 flex flex-col overflow-hidden text-xl font-bold leading-6
                                 text-white hover:underline"
                         >
                             {data.name}
-                        </a>
+                        </button>
                         <button
                             onClick={() => setIsOpen(true)}
                             className="flex h-6 w-6 items-center justify-center rounded-full bg-white bg-opacity-20
@@ -68,9 +104,17 @@ export default function CvItem({ data, setUpdateChange = () => {} }) {
                             setUpdateChange={setUpdateChange}
                         />
                     </h4>
-                    <p className="mb-4 text-[15px] leading-5 text-white">
-                        Cập nhật lần cuối <span>{data.whenCreated}</span>
-                    </p>
+                    <div className="flex-col gap-1">
+                        {data.lastUpdated && (
+                            <p className="mb-4 text-[15px] leading-5 text-white">
+                                Cập nhật lần cuối{' '}
+                                <span>{data.lastUpdated}</span>
+                            </p>
+                        )}
+                        <p className="mb-4 text-[15px] leading-5 text-white">
+                            Thời gian tạo <span>{data.whenCreated}</span>
+                        </p>
+                    </div>
                     <ul className="flex justify-between">
                         <li>
                             <button

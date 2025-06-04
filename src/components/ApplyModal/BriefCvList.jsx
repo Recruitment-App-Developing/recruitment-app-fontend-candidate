@@ -11,8 +11,8 @@ export default function BriefCvList({
     applicationInfor,
     setApplicationInfor,
 }) {
-    const cvOnline = cvList.filter((item) => item.cvType == 'ONLINE');
-    const cvUpload = cvList.filter((item) => item.cvType === 'UPLOAD');
+    // const cvOnline = cvList?.filter((item) => item.cvType == 'ONLINE');
+    const cvUpload = cvList?.filter((item) => item.cvType === 'UPLOAD');
 
     return (
         <div className={clsx(className, 'space-y-2')}>
@@ -20,7 +20,7 @@ export default function BriefCvList({
                 <div className="flex flex-row justify-between">
                     <div className="flex-center flex gap-3">
                         <span className="flex-center gap-1">
-                            CV Online:{' '}
+                            {/* CV Online:{' '}
                             <h3 className="font-semibold">
                                 {
                                     cvList.filter(
@@ -28,9 +28,15 @@ export default function BriefCvList({
                                             item.id === applicationInfor.cvId,
                                     )[0].name
                                 }
-                            </h3>
+                            </h3> */}
                         </span>
-                        <a
+                        <button
+                            onClick={() => openCvPdf(link)}
+                            className="flex-center font-semibold text-success"
+                        >
+                            Xem
+                        </button>
+                        {/* <a
                             href={
                                 cvList.filter(
                                     (item) => item.id === applicationInfor.cvId,
@@ -40,7 +46,7 @@ export default function BriefCvList({
                             className="flex-center font-semibold text-success"
                         >
                             Xem
-                        </a>
+                        </a> */}
                     </div>
                     <button
                         onClick={() =>
@@ -55,7 +61,7 @@ export default function BriefCvList({
                 </div>
             ) : (
                 <>
-                    <h3>CV Online</h3>
+                    {/* <h3>CV Online</h3>
                     {cvOnline.map((item) => (
                         <SelectCvBox
                             key={item.id}
@@ -69,7 +75,7 @@ export default function BriefCvList({
                         >
                             {item.name}
                         </SelectCvBox>
-                    ))}
+                    ))} */}
                     {cvUpload.length != 0 ? (
                         <>
                             <h3>CV Upload</h3>
@@ -82,7 +88,7 @@ export default function BriefCvList({
                                             cvId: item.id,
                                         })
                                     }
-                                    link={item.cvLink}
+                                    link={item.id}
                                 >
                                     {item.name}
                                 </SelectCvBox>

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { openCvPdf } from '~/constants/common';
 
 export default function SelectCvBox({ children, link, onClick }) {
     const [isMount, setIsMount] = useState(false);
@@ -12,10 +13,19 @@ export default function SelectCvBox({ children, link, onClick }) {
         >
             <div className="flex-center gap-2">
                 {children}
+                <button
+                    onClick={() => openCvPdf(link)}
+                    className="text-success"
+                >
+                    Xem
+                </button>
+            </div>
+            {/* <div className="flex-center gap-2">
+                {children}
                 <a href={link} target="_blank" className="text-success">
                     Xem
                 </a>
-            </div>
+            </div> */}
             {isMount && (
                 <button
                     onClick={onClick}

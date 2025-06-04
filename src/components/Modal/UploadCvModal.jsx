@@ -1,28 +1,45 @@
 import { Dialog, TextField } from '@mui/material';
 import ImageItem from '../ImageItem';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { fetchAddCv } from '~/services/cvService';
 import { toast } from 'react-toastify';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClose } from '@fortawesome/free-solid-svg-icons';
 
 export default function UploadCvModel({ open, onClose }) {
+    const [fileName, setFileName] = useState(null);
     const [cvUpload, setCvUpload] = useState({
         name: '',
         cvType: 'UPLOAD',
-        cvFile: 'https://www.topcv.vn/v4/image/upload_cv/default_cv.jpg',
+        cvFile: null,
     });
+    const fileInputRef = useRef(null);
+    const triggerFileInput = () => {
+        fileInputRef.current.click();
+    };
 
     const handleSubmit = () => {
+        console.log(cvUpload);
         fetchAddCv(cvUpload).then((data) => {
             toast.success(data.message);
             setCvUpload({
                 name: '',
                 cvType: 'UPLOAD',
-                cvFile: 'https://www.topcv.vn/v4/image/upload_cv/default_cv.jpg',
+                cvFile: '',
             });
+            setFileName(null);
             onClose();
         });
+    };
+
+    const handleChange = (e) => {
+        const selectedFile = e.target.files[0];
+        if (selectedFile && selectedFile.type === 'application/pdf') {
+            setCvUpload({ ...cvUpload, cvFile: selectedFile });
+            setFileName(selectedFile.name);
+        } else {
+            toast.error('Chỉ chấp nhận file PDF!');
+        }
     };
 
     return (
@@ -87,23 +104,32 @@ export default function UploadCvModel({ open, onClose }) {
                 <div
                     className="my-4 flex cursor-pointer flex-col items-center gap-2 rounded-md border-[1px]
                         border-dashed border-[#b3b8bd] bg-white px-8 py-4"
+                    onClick={triggerFileInput}
                 >
-                    <div className="flex items-center gap-3">
-                        <img
-                            className="h-[28px] w-[42px] align-middle"
-                            src="https://www.topcv.vn/v4/image/upload-cv/upload-cloud.png"
-                            alt=""
+                    <div className="flex-col items-center justify-center gap-3">
+                        {fileName && (
+                            <div className="flex flex-col items-center justify-center gap-2">
+                                <p className="font-medium text-green-500">
+                                    {fileName}
+                                </p>
+                                <p className="text-medium cursor-pointer text-green-500 hover:underline">
+                                    Chọn tệp khác
+                                </p>
+                            </div>
+                        )}
+                        <input
+                            type="file"
+                            accept="application/pdf"
+                            onChange={handleChange}
+                            ref={fileInputRef}
+                            className="hidden"
                         />
-                        <span className="text-sm font-semibold text-[#263a4d]">
-                            Tải lên CV từ máy tính, chọn hoặc kéo thả
-                        </span>
+                        {!fileName && (
+                            <span className="text-sm font-semibold text-[#263a4d]">
+                                Tải lên CV từ máy tính, chọn hoặc kéo thả
+                            </span>
+                        )}
                     </div>
-                    <ImageItem
-                        src={cvUpload?.cvFile}
-                        onChange={(res) =>
-                            setCvUpload({ ...cvUpload, cvFile: res })
-                        }
-                    />
                 </div>
                 <div className="flex w-full items-center justify-center">
                     <button

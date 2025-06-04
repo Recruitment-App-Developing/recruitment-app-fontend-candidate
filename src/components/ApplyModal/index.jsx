@@ -21,13 +21,11 @@ export default function ApplyModal({ jobId, jobName, open, onClose }) {
         cvId: null,
     });
 
-    console.log(applicationInfor);
-
     const [selected, setSelected] = useState('LASTEST_CV');
 
     useEffect(() => {
         if (selected === 'MY_CV_LIST') {
-            fetchCvList().then((data) => setCvList(data.data));
+            fetchCvList().then((data) => setCvList(data.data.data));
         }
     }, [selected]);
 

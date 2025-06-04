@@ -13,6 +13,8 @@ import { fetchListProvince } from '~/services/addressService';
 import ResultSearch from '../ResultSearch';
 import { fetchSearchJob } from '~/services/jobService';
 import BreadCrumb from '~/components/BreadCrumb';
+import { Pagination } from '@mui/material';
+import SalarySearchBox from './SalarySearchBox';
 
 const breadCrumb = [
     { title: 'Trang chủ', link: '/' },
@@ -22,11 +24,21 @@ const breadCrumb = [
 export default function SearchBox() {
     const [provinceList, serProvinceList] = useState();
     const [jobList, setJobList] = useState([]);
-    const [condition, setCondition] = useState([]);
+    const [condition, setCondition] = useState({
+        pageSize: 6,
+        currentPage: 0,
+        salaryFrom: '',
+        salaryTo: '',
+    });
+    const [currentPage, setCurrentPage] = useState(1);
+    const [totalPage, setTotalPage] = useState(0);
 
     useEffect(() => {
         const queryString = new URLSearchParams(condition).toString();
-        fetchSearchJob(queryString).then((data) => setJobList(data.data));
+        fetchSearchJob(queryString).then((data) => {
+            setJobList(data.data.content);
+            setTotalPage(data.data.totalPages);
+        });
     }, [condition]);
 
     useEffect(() => {
@@ -39,6 +51,14 @@ export default function SearchBox() {
             serProvinceList(change);
         });
     }, []);
+
+    const handleSalary = (salaryFrom, salaryTo) => {
+        setCondition({
+            ...condition,
+            salaryFrom: salaryFrom,
+            salaryTo: salaryTo,
+        });
+    };
 
     const handleChange = (id, value) => {
         setCondition((prev) => ({
@@ -85,16 +105,21 @@ export default function SearchBox() {
                         />
                     </div>
                     <div className="flex-between mt-4 h-11 w-full gap-4">
-                        {searchDataConstant.map((item, index) => (
-                            <DropdownSearchBox
-                                id={item.id}
-                                key={index}
-                                leftIcon={item.leftIcon}
-                                contentInit={item.title}
-                                listItem={item.items}
-                                onChange={handleChange}
-                            />
-                        ))}
+                        {/* <SalarySearchBox handleSalary={handleSalary} /> */}
+                        {searchDataConstant.map((item, index) =>
+                            item.id === 'salary' ? (
+                                <SalarySearchBox handleSalary={handleSalary} />
+                            ) : (
+                                <DropdownSearchBox
+                                    id={item.id}
+                                    key={index}
+                                    leftIcon={item.leftIcon}
+                                    contentInit={item.title}
+                                    listItem={item.items}
+                                    onChange={handleChange}
+                                />
+                            ),
+                        )}
                     </div>
                 </div>
             </div>
@@ -104,6 +129,17 @@ export default function SearchBox() {
                     <BreadCrumb data={breadCrumb} />
                 </div>
                 <ResultSearch jobList={jobList} />
+                <Pagination
+                    className="flex-center"
+                    onChange={(_e, p) => {
+                        setCurrentPage(p);
+                        handleChange('currentPage', p - 1);
+                    }}
+                    page={currentPage}
+                    count={totalPage}
+                    variant="outlined"
+                    color="primary"
+                />
             </div>
         </div>
     );

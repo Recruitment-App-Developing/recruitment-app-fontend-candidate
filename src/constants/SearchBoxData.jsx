@@ -101,9 +101,7 @@ export const searchDataConstant = [
         leftIcon: <FontAwesomeIcon icon={faStar} />,
     },
     {
-        title: 'Mức lương',
-        items: ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6'],
-        leftIcon: <FontAwesomeIcon icon={faCircleDollarToSlot} />,
+        id: 'salary',
     },
     {
         id: 'jobPosition',

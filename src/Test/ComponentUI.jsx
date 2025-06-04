@@ -61,11 +61,13 @@ import CvItem from '~/pages/ManageCv/CvItem';
 import UploadCvModel from '~/components/Modal/UploadCvModal';
 import EditCvModal from '~/components/Modal/EditCvModal';
 import ConfirmDeleteCv from '~/components/Modal/ConfirmDeleteCv';
+import SalarySearchBox from '~/pages/JobSearchPage/SearchBox/SalarySearchBox';
 
 function ComponentUI() {
     return (
         <div className="flex-center w-screen bg-slate-300">
-            <ConfirmDeleteCv open={true} />
+            {/* <ConfirmDeleteCv open={true} /> */}
+            <SalarySearchBox />
         </div>
     );
     // const [searchText, setSearchText] = useState('');
